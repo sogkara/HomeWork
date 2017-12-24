@@ -15,6 +15,9 @@ public class DynamicLoadPage extends BasePage {
         super(webDriver);
         visit("http://the-internet.herokuapp.com/dynamic_loading/1");
     }
+public void loading(String cssSelector){
 
+        isDisplayed(find(By.cssSelector("cssSelector")));
+}
 
 }
