@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * Created by sargis on 12/18/17
@@ -31,8 +32,13 @@ public class GoogleSearchPage extends BasePage{
         clickSearchButton();
     }
 
-    public WebElement getFirstResult() {
-        List<WebElement> elements = findElements(By.cssSelector(".rc .r"));
+    public WebElement getFirstResult(int time) {
+        List<WebElement> elements = findElements(By.cssSelector((".rc .r")));
         return elements.get(0);
     }
+    public  boolean isDisplay(){
+       return isDisplayed(getFirstResult(300));
+
+    }
+
 }

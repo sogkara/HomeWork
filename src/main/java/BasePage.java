@@ -1,9 +1,8 @@
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -55,19 +54,33 @@ public class BasePage {
     public void type(String cssSelector, String text) {
         type(find(cssSelector), text);
     }
-
     public boolean isDisplayed(WebElement element) {
         try {
+
             return element.isDisplayed();
+
         } catch (NoSuchElementException e) {
             return false;
         }
     }
-    public boolean isDisplayed(By locator) {
+
+    public boolean isDisplayed(String cssSelector) {
+        try {
+            WebDriverWait wait= (WebDriverWait) driver.findElement (By.cssSelector("cssSelector"));
+            return isDisplayed(cssSelector);
+
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+       public boolean isDisplayed(By locator) {
         return isDisplayed(find(locator));
     }
-    public boolean isDisplayed(String cssSelector) {
+    public boolean isDisplaye(String cssSelector) {
         return isDisplayed(find(cssSelector));
+
+
     }
 
 
